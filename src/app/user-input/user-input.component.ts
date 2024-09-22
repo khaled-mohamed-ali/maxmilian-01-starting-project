@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {CalculateInvestmentResultsService} from "../calculate-investment-results.service";
+import {InvestmentResultsService} from "../investment-results.service";
 
 
 
@@ -23,7 +23,7 @@ type UserInvest = {
 
 export class UserInputComponent {
 
-  constructor(private  service: CalculateInvestmentResultsService) {
+  constructor(private  service: InvestmentResultsService) {
   }
 
   userInvestment:  UserInvest = {
@@ -39,7 +39,7 @@ export class UserInputComponent {
 
 
   onSubmit() {
-    CalculateInvestmentResultsService.sendDataToCalc(this.userInvestment)
+    InvestmentResultsService.userData(this.userInvestment)
   }
 
 

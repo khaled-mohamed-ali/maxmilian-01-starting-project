@@ -39,8 +39,15 @@ export class UserInputComponent {
 
 
   onSubmit() {
-    InvestmentResultsService.userData(this.userInvestment)
+    InvestmentResultsService.userData(this.userInvestment);
+    this.userInvestment= {
+      initialInvestment: '',
+      expectedReturn: '',
+      annualInvestment: '',
+      duration: ''
+    }
   }
+
 
 
 }

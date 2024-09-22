@@ -34,9 +34,9 @@ export class InvestmentResultsService {
 
 }
 
-setTimeout(()=> {
+setTimeout(() => {
   console.log(InvestmentResultsService.annualData)
-},15000)
+}, 10000)
 
 
 

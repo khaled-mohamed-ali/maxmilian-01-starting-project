@@ -27,10 +27,10 @@ export class UserInputComponent {
   }
 
   userInvestment:  UserInvest = {
-    initialInvestment: '',
-    expectedReturn: '',
-    annualInvestment: '',
-    duration: ''
+    initialInvestment: '1',
+    expectedReturn: '1',
+    annualInvestment: '1000',
+    duration: '5'
   }
 
 

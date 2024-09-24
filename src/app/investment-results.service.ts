@@ -1,37 +1,41 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import  { investmentData } from './result-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InvestmentResultsService {
+export class investmentService {
+  static annualData: any = [];
 
-  static annualData: any[] = [];
+  calculateInvestmentResults(data: investmentData) {
+    investmentService.annualData = []
+    const {
+      initialInvestment,
+      duration,
+      expectedReturn,
+      annualInvestment } = data
 
+    let investmentValue = initialInvestment;
 
-  static userData(userInvestment: any) {
-    let data = userInvestment;
-
-
-    let investmentValue = data.initialInvestment;
-    for (let i = 0; i < data.duration; i++) {
+    for (let i = 0; i < duration; i++) {
       const year = i + 1;
-      const interestEarnedInYear = investmentValue * (data.expectedReturn / 100);
-      investmentValue += interestEarnedInYear + data.annualInvestment;
+      const interestEarnedInYear = investmentValue * (expectedReturn / 100);
+      investmentValue += interestEarnedInYear + annualInvestment;
       const totalInterest =
-        investmentValue - data.annualInvestment * year - data.initialInvestment;
-      InvestmentResultsService.annualData.push({
+        investmentValue - annualInvestment * year - initialInvestment;
+        investmentService.annualData.push({
         year: year,
         interest: interestEarnedInYear,
         valueEndOfYear: investmentValue,
-        annualInvestment: data.annualInvestment,
+        annualInvestment: annualInvestment,
         totalInterest: totalInterest,
-        totalAmountInvested: data.initialInvestment + data.annualInvestment * year,
+        totalAmountInvested: initialInvestment + annualInvestment * year,
       });
     }
-    return InvestmentResultsService.annualData
+
+    console.log(investmentService.annualData ,'investmentService.annualData ')
+    return investmentService.annualData 
   }
-
-
 }
 
 

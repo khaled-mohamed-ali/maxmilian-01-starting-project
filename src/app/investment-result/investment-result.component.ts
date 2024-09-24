@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import {InvestmentResultsService} from "../investment-results.service";
-import {CurrencyPipe}  from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
+import { investmentService } from '../investment-results.service'
+
+
 @Component({
   selector: 'investment-result',
   standalone: true,
@@ -8,13 +10,17 @@ import {CurrencyPipe}  from '@angular/common';
   templateUrl: './investment-result.component.html',
   styleUrl: './investment-results.component.css'
 })
-export class InvestmentResultComponent {
-  enteredData: any[] = [];
 
-  constructor(private  service: InvestmentResultsService) {
-    this.enteredData = InvestmentResultsService.annualData;
-    console.log(this.enteredData)
+export class  InvestmentResultComponent {
+
+  constructor(public InvestmentService: investmentService) {
+    
   }
 
+ get data() {
+  return investmentService.annualData
+ }
 
+    
 }
+

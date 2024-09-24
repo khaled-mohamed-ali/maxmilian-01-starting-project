@@ -1,15 +1,9 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {InvestmentResultsService} from "../investment-results.service";
+import {investmentService} from "../investment-results.service";
 
 
 
-type UserInvest = {
-  initialInvestment: string,
-  expectedReturn: string,
-  annualInvestment: string,
-  duration: string
-}
 
 @Component({
   selector: 'user-input',
@@ -23,29 +17,24 @@ type UserInvest = {
 
 export class UserInputComponent {
 
-  constructor(private  service: InvestmentResultsService) {
+  constructor(private  investmentService: investmentService) {
   }
 
-  userInvestment:  UserInvest = {
-    initialInvestment: '1',
-    expectedReturn: '1',
-    annualInvestment: '1000',
-    duration: '5'
-  }
-
-
-
-
-
+    entredinitialInvestment ='1'
+    entredExpectedReturn ='1'
+    entredLInvestment= '5' 
+    entredDuration= '10'
+  
 
   onSubmit() {
-    InvestmentResultsService.userData(this.userInvestment);
-    this.userInvestment= {
-      initialInvestment: '',
-      expectedReturn: '',
-      annualInvestment: '',
-      duration: ''
-    }
+    this.investmentService.calculateInvestmentResults({
+      initialInvestment: + this.entredinitialInvestment,
+      duration: + this.entredDuration,
+      expectedReturn : + this.entredExpectedReturn,
+      annualInvestment : + this.entredinitialInvestment
+    })
+
+  
   }
 
 

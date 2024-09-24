@@ -5,7 +5,7 @@ import  { investmentData } from './result-service';
   providedIn: 'root'
 })
 export class investmentService {
-  static annualData: any = [];
+  static annualData: any  = [];
 
   calculateInvestmentResults(data: investmentData) {
     investmentService.annualData = []
@@ -33,7 +33,6 @@ export class investmentService {
       });
     }
 
-    console.log(investmentService.annualData ,'investmentService.annualData ')
     return investmentService.annualData 
   }
 }

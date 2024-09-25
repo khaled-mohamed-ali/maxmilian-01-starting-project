@@ -1,31 +1,29 @@
-@if (!data) {
-  <p class="center">please enter data to calculate </p>
+@if (data == false) {
+<p class="center">please enter data to calculate </p>
 }
 
 @else {
 
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Yaer</th>
-        <th scope="col">Investment Value</th>
-        <th scope="col">interest</th>
-        <th scope="col">Total Interest</th>
-        <th scope="col">Invested Capital</th>
-      </tr>
-    </thead>
-    @for(item of data; track item.year) {
-    <tbody>
-      <th scope="row">{{item.year}}</th>  
-      <td>{{item.valueEndOfYear |currency}}</td>
-      <td>{{item.interest |currency }}</td>
-      <td>{{item.totalInterest |currency}}</td>
-      <td>{{item.annualInvestment |currency }}</td>
-    </tbody>
-    }
-  
-  </table>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Yaer</th>
+      <th scope="col">Investment Value</th>
+      <th scope="col">interest</th>
+      <th scope="col">Total Interest</th>
+      <th scope="col">Invested Capital</th>
+    </tr>
+  </thead>
+  @for(item of data; track item.year) {
+  <tbody>
+    <th scope="row">{{item.year}}</th>
+    <td>{{item.valueEndOfYear |currency}}</td>
+    <td>{{item.interest |currency }}</td>
+    <td>{{item.totalInterest |currency}}</td>
+    <td>{{item.annualInvestment |currency }}</td>
+  </tbody>
+  }
+
+</table>
 
 }
-
-
